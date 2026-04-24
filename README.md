@@ -1,172 +1,105 @@
-# EXPERIMENT - 14
+# EXPERIMENT 14
 
-AIM - Data Binning and Data Formatting using Python
+AIM:
 
-THEORY: Data Binning and Data Formatting using Python
-Data preprocessing is an essential step in data analysis, where raw data is transformed into a clean and meaningful format.
-In this experiment, we use the libraries Pandas and NumPy to perform data binning and data formatting operations.
+To study and implement data binning and data formatting using Python (Pandas library) by creating datasets and applying functions like pd.cut(), value_counts(), unique(), round(), str.upper(), sort_values(), and dtypes for organizing, categorizing, and analyzing data effectively. This helps in converting raw data into meaningful and structured information.
 
-1. Importing Libraries
+THEORY:
 
-import pandas as pd
+1. Data Binning
 
-Imports the Pandas library.
+Data binning is a technique used to convert continuous numerical data into discrete groups or categories (bins). It reduces complexity, removes noise, and makes data easier to analyze and interpret, especially when dealing with large datasets.
 
-pd is an alias used to call Pandas functions easily.
+Functions Used:
 
-Used for handling tables (DataFrames).
+a) pd.cut()
 
-import numpy as np
+Used to divide numerical data into intervals (bins).
+Converts continuous values into categorical labels.
+Makes comparison and analysis easier.
 
-Imports NumPy library.
+Applications in experiment:
 
-Used for numerical operations and arrays.
+Price → Low, Medium, High (helps classify product cost levels)
+Units_Sold → Low Sales, Medium Sales, High Sales (helps analyze demand)
+Order_Value → Low, Medium, High (helps categorize transaction size)
+Delivery_Time → On Time, Delayed, Critical (helps evaluate service efficiency)
 
-3. Creating Data
+b) value_counts()
 
-np.random.seed(0)
+Counts the number of values in each category.
+Helps in understanding frequency distribution of data.
+Useful for identifying which category has the highest or lowest data.
 
-Sets a fixed seed value.
+c) unique()
 
-Ensures the same random numbers are generated every time you run the program.
+Returns all distinct values from a column.
+Helps to verify whether binning or categorization is done correctly.
 
-pd.DataFrame({...})
+2. Data Formatting
 
-Creates a DataFrame (table).
+Data formatting ensures that the dataset is clean, consistent, and easy to read, which is important before performing analysis.
 
-Data is given in dictionary format (column name → values).
+Functions Used:
 
-Example:
+a) df.dtypes
 
-'Price': np.random.randint(100, 1000, 10)
+Displays the data type of each column (int, float, object, etc.).
+Helps in identifying incorrect data types and ensures proper processing.
 
-Generates 10 random integers between 100 and 1000.
+b) round()
 
-5. Displaying Data
+Rounds numerical values to a specified number of decimal places.
+Improves readability and avoids unnecessary precision.
+Example use:
+Price values rounded to make them simpler and uniform.
 
-print(df)
+c) str.upper()
 
-Prints the complete dataset.
+Converts all text data into uppercase.
+Ensures uniformity and avoids case-sensitive issues during analysis.
 
-7. Data Binning
+d) astype()
+
+Used to change the data type of a column.
+Important when performing calculations or formatting data properly.
+
+
+3. Data Sorting
+
+Function:
+ sort_values()
+Used to arrange data in a specific order (ascending or descending).
+Helps in identifying trends such as highest or lowest values.
+
+Types:
+
+Ascending (default) → lowest to highest
+Descending → highest to lowest (ascending=False)
+
+
+4. DataFrame Creation
    
-pd.cut(column, bins, labels=...)
+Function: pd.DataFrame()
+Used to create structured tabular data from dictionaries or lists.
+Forms the base for performing all operations.
 
-Used to divide continuous data into categories (bins).
+Datasets used:
 
-Example:
+Product dataset (Price, Units Sold, etc.)
+Order dataset (Order Value, Delivery Time, etc.)
 
-df['Price_Category'] = pd.cut(df['Price'],
-                             bins=[0, 300, 700, 1000],
-                             labels=['Low', 'Medium', 'High'])
-Explanation:
 
-bins: Defines range intervals
-
-labels: Names given to each interval
-
-Creates a new column with categories
-
-9. Checking Data Types
+5. Libraries Used
    
-df.dtypes
+Pandas (pd) → Used for data manipulation, binning, formatting, and analysis
+NumPy (np) → Used for numerical operations (supporting library)
 
-Displays the data type of each column (int, float, object, etc.)
 
-11. Type Conversion
+CONCLUSION:
 
-df['Price'] = df['Price'].astype(float)
+The experiment successfully demonstrates how data binning and formatting techniques are used in data preprocessing. By using pd.cut(), continuous data is converted into meaningful categories, making it easier to analyze patterns and trends.
 
-Converts data type of column to float.
+Functions like value_counts() and unique() help in understanding and verifying the data distribution. Formatting functions such as round() and str.upper() improve consistency and readability, while sort_values() helps in organizing the data systematically.
 
-13. String Operations
-
-df['Category'].str.upper()
-
-Converts all text values to uppercase.
-
-Example:
-
-electronics → ELECTRONICS
-
-15. Rounding Values
-    
-df['Order_Value'].round(2)
-
-Rounds values to 2 decimal places.
-
-17. Sorting Data
-    
-df.sort_values(by='Price')
-
-Sorts data in ascending order.
-
-df.sort_values(by='Price', ascending=False)
-
-Sorts data in descending order.
-
-19. Unique Values
-
-df['Category'].unique()
-
-Returns all unique values in a column.
-
-20. Adding New Columns
-    
-df['New_Column'] = ...
-
-Creates a new column based on some logic.
-
-Example:
-
-df['Order_Value'] = df['Price'] * df['Units_Sold']
-
-22. Head Function
-    
-df.head()
-
-Displays first 5 rows of dataset.
-
-24. Tail Function
-    
-df.tail()
-
-Displays last 5 rows of dataset.
-
-26. Describe Function
-    
-df.describe()
-
-Gives statistical summary:
-
-Mean
-
-Min
-
-Max
-
-Standard deviation
-
-28. Shape of Data
-    
-df.shape
-
-Returns number of rows and columns.
-
-Example: (10, 5)
-
-30. Columns Name
-    
-df.columns
-
-Lists all column names.
-
-32. Indexing / Accessing Data
-    
-df['Price']
-
-Accesses a specific column.
-
-df.loc[0]
-
-Accesses row by label (index).
+Thus, this experiment highlights the importance of data cleaning, transformation, and organization, which are essential steps in data analysis, helping in better decision-making and accurate interpretation of data.
